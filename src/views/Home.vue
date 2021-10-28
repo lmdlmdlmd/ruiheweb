@@ -1,8 +1,8 @@
 <template>
-  <div class="main" :class="'theme_' + $root.theme">
+  <div class="main">
 
     <!-- 修改模式弹窗 -->
-    <change-mode v-show="modeShow" :mode='mode' @ok='confirmChangeMode' @close='modeShow = false'></change-mode>
+    <change-mode v-if="modeShow" :mode='mode' @ok='confirmChangeMode' @close='modeShow = false'></change-mode>
 
     <Header></Header>
 
@@ -10,7 +10,7 @@
       <div class="cards">
         <div class="card-main">
           <div class="change-mode" @click="handleChangeMode">
-            春秋季弱制热<span class="iconfont icon-qiehuan"></span>
+            {{mode}}<span class="iconfont icon-qiehuan"></span>
           </div>
           <div class="data-box">
             <div class="data-item">
@@ -96,7 +96,7 @@ export default {
   data() {
     return {
       modeShow: false,
-      mode: 1,
+      mode: '春秋季弱制热',
     };
   },
   methods: {
@@ -107,6 +107,7 @@ export default {
     // 确认切换模式
     confirmChangeMode(val) {
       console.log(val)
+      this.mode = val;
       this.modeShow = false;
     },
 

@@ -126,13 +126,13 @@ export default {
   padding-right: 20px;
   text-align: left;
   color: #fff;
-  font-size: 30px;
+  font-size: 34px;
   letter-spacing: 2px;
   cursor: pointer;
 
   span {
     margin-right: 20px;
-    font-size: 30px;
+    font-size: 34px;
   }
 }
 
@@ -182,7 +182,11 @@ export default {
         border: 0;
         border-radius: 10px;
         background-color: #D9DEF5;
+        font-family: 'OPPOSans-L', sans-serif;
         font-size: 40px;
+      }
+      input:focus {
+        background-color: #fff;        
       }
 
       .error-tip {

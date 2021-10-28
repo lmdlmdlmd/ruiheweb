@@ -1,5 +1,5 @@
 <template>
-  <div class="main" :class="'theme_' + $root.theme">
+  <div class="main">
 
     <!-- 房间设置弹窗 -->
     <room-setting v-if="settingShow" :room='roomInfo' @update="updateData" @close='settingShow = false'></room-setting>
@@ -129,7 +129,7 @@ export default {
       height: 100%;
       box-sizing: border-box;
       margin: 0 auto;
-      padding: 20px 40px;
+      padding: 10px 40px;
       background-color: #202435;
       border-radius: 25px;
       text-align: center;
@@ -138,17 +138,18 @@ export default {
       cursor: pointer;
 
       .switch {
-        height: 50px;
+        height: 60px;
         text-align: right;
 
         ::v-deep .el-switch .el-switch__core {
-          width: 45px !important;
-          height: 22px;
+          width: 50px !important;
+          height: 26px;
+          border-radius: 12px;
           border-color: #6e7286;
           background-color: #6e7286;
         }
         ::v-deep .el-switch .el-switch__core::after {
-          top: 2px;
+          top: 3px;
           background-color: #3E435E;
         }
 

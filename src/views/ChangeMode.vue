@@ -6,39 +6,10 @@
 
     <div class="container" :mode="mode">
       <div class="modes">
-        <div class="mode-box">
-          <div class="mode-item" @click="handleClickMode('1')">
-            <p>新风除湿<br>模式</p>
-          </div>
-        </div>
-        <div class="mode-box">
-          <div class="mode-item" @click="handleClickMode('1')">
-            <p>夏季五恒<br>模式</p>
-          </div>
-        </div>
-        <div class="mode-box">
-          <div class="mode-item" @click="handleClickMode('1')">
-            <p>秋季弱冷<br>模式</p>
-          </div>
-        </div>
-        <div class="mode-box">
-          <div class="mode-item" @click="handleClickMode('1')">
-            <p>冬季弱制热<br>模式</p>
-          </div>
-        </div>
-        <div class="mode-box">
-          <div class="mode-item active" @click="handleClickMode('1')">
-            <p>冬季五恒<br>模式</p>
-          </div>
-        </div>
-        <div class="mode-box">
-          <div class="mode-item" @click="handleClickMode('1')">
-            <p>模式1</p>
-          </div>
-        </div>
-        <div class="mode-box">
-          <div class="mode-item" @click="handleClickMode('1')">
-            <p>模式2</p>
+        <div class="mode-box" v-for="item in modeList" :key="item.id">
+          <div class="mode-item" :class="(mode == item.name) ? 'active' : ''" @click="handleClickMode(item)">
+            <p v-if="item.name && item.name.length < 6">{{item.name}}<br>模式</p>
+            <p v-else>{{item.name}}模式</p>
           </div>
         </div>
       </div>
@@ -56,19 +27,35 @@ export default {
   },
   data() {
     return {
-      switch1: true,
-      switch2: false,
+      modeList: [{
+        id: 1,
+        name: '新风除湿'
+      }, {
+        id: 2,
+        name: '夏季五恒'
+      }, {
+        id: 3,
+        name: '秋季弱冷'
+      }, {
+        id: 4,
+        name: '冬季弱制热'
+      }, {
+        id: 5,
+        name: '冬季五恒'
+      }, {
+        id: 6,
+        name: '春秋季弱制热'
+      }]
     };
   },
   methods: {
     handleGoBack(){
       this.$emit('close');
     },
-    handleClickMode(val){
-      // this.$router.push('/home');
-      this.$emit('ok', val);
+    handleClickMode(data){
+      this.$emit('ok', data.name);
     }
-  },
+  }
 };
 </script>
 
@@ -80,13 +67,13 @@ export default {
   padding-right: 20px;
   text-align: left;
   color: #fff;
-  font-size: 30px;
+  font-size: 34px;
   letter-spacing: 2px;
   cursor: pointer;
 
   span {
     margin-right: 20px;
-    font-size: 30px;
+    font-size: 34px;
   }
 }
 
