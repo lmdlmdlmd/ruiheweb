@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="app-container" :class="'theme_' + $root.theme">
+    <div v-show="!(path ==='/setting')" class="app-container" :class="'theme_' + $root.theme">
       <div :style="marginStyle">
         <div style="position: relative;">
           <div class="main-container" style="width: 1920px;height: 1200px;" :style="transformStyle">
@@ -9,12 +9,16 @@
         </div>
       </div>
     </div>
+    <div v-show="path ==='/setting'">
+      <router-view />
+    </div>
   </div> 
 </template>
 <script>
 export default {
   data() {
     return {
+      path: '',
       scaleX: 1,
       scaleY: 1,
       marginYHorizontal: 0,
@@ -93,7 +97,14 @@ export default {
     }
   },
   mounted() {
+    this.path = this.$route.path;
+
     this.listenResize();
+  },
+  watch:{
+      $route(to,from){
+          this.path = to.path
+      }
   }
 }
 </script>
