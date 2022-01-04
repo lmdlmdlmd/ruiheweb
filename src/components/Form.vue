@@ -269,7 +269,7 @@ export default {
         }
         .text.red {
           position: relative;
-          color: red;
+          color: #ff6161;
         }
         .text.red span:after {
           content: '';
@@ -279,10 +279,10 @@ export default {
           width: 8px;
           height: 8px;
           border-radius: 50%;
-          background: red;
+          background: #ff6161;
         }
         .text.green{
-          color: green;
+          color: #a3ff60;
         }
 
         .value {
