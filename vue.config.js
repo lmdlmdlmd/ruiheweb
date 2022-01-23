@@ -6,22 +6,22 @@ module.exports = {
   runtimeCompiler: true,
   lintOnSave: false,
   // 跨域
-  // devServer: {
-  //   open: false,
-  //   port: 80,
-  //   overlay: {
-  //     warnings: false,
-  //     errors: true
-  //   },
-  //   // 接口转发
-  //   proxy: {
-  //     '/api': {
-  //       target: '',
-  //       changeOrigin: true,
-  //       pathRewrite: {
-  //         '^/dev': ''
-  //       }
-  //     }
-  //   }
-  // }
+  devServer: {
+    open: false,
+    port: 8080,
+    overlay: {
+      warnings: false,
+      errors: true
+    },
+    // 接口转发
+    proxy: {
+      '/api': {
+        target: 'http://bushishan.com:8082',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '/api'
+        }
+      }
+    }
+  }
 }
